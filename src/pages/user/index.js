@@ -1,9 +1,9 @@
 import React from "react";
 import "./index.less";
 
-export default function user(props) {
+export default function User(props) {
   return (
-    <div>
+    <div className="User">
       <ul>
         <li>
           <a href="/">Home</a>
@@ -15,7 +15,7 @@ export default function user(props) {
           <a href="/blog">Blog</a>
         </li>
       </ul>
-      <p>UserPage</p>
+      <p className="User__content">UserPage</p>
     </div>
   );
 }

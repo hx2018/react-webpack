@@ -6,12 +6,12 @@ import {
   Switch,
   HashRouter,
 } from "react-router-dom";
-import home from "./pages/home";
-import user from "./pages/user";
-import blog from "./pages/blog";
-import resume from "./pages/resume";
+import Home from "./pages/home";
+import User from "./pages/user";
+import Blog from "./pages/blog";
+import Resume from "./pages/resume";
 import "./app.less";
-import "/static/css/reset.min.css";
+// import "/static/css/reset.min.css";
 
 export default function App() {
   return (
@@ -30,9 +30,9 @@ export default function App() {
           <Link to="/resume">Resume</Link>
         </li>
       </ul>
-      <Route path="/" exact component={home} />
-      <Route path="/user" exact component={user} />
-      <Route path="/blog" exact component={blog} />
+      <Route path="/" exact component={Home} />
+      <Route path="/user" exact component={User} />
+      <Route path="/blog" exact component={Blog} />
       <Route
         path="/resume"
         exact
