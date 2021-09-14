@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.less";
-// import "/static/css/reset.min.css";
 
 export default function user(props) {
   return (
