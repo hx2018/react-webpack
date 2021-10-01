@@ -11,11 +11,10 @@ import User from "./pages/user";
 import Blog from "./pages/blog";
 import Resume from "./pages/resume";
 import "./app.less";
-// import "/static/css/reset.min.css";
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -32,7 +31,7 @@ export default function App() {
       </ul>
       <Route path="/" exact component={Home} />
       <Route path="/user" exact component={User} />
-      <Route path="/blog" exact component={Blog} />
+      <Route path="/blog" component={Blog} />
       <Route
         path="/resume"
         exact
@@ -42,6 +41,6 @@ export default function App() {
           </div>
         )}
       />
-    </HashRouter>
+    </BrowserRouter>
   );
 }

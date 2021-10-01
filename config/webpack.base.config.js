@@ -1,6 +1,5 @@
 const utils = require("./utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { util } = require("webpack");
 
 module.exports = {
@@ -49,15 +48,15 @@ module.exports = {
       filename: utils.resolve("../dist/index.html"), // html模板的生成路径
       //hash: true, // 在打包的资源插入html会加上hash
     }),
-    // *********** HtmlWebpackPlugin指定模版html文件"<link href="引入的样式css文件不会打包到dist目录（只有js文件import的css文件才会编译到bundle.js文件），因此需要借助该插件将引入的样式文件copy到dist目录对应的static目录下面************
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: utils.resolve("../static"), // 从哪个目录copy
-          to: "static", // copy到那个目录
-        },
-      ],
-    }),
+    // *********** HtmlWebpackPlugin指定模版html文件"<link href="引入的样式css文件不会打包到dist目录（只有js文件import的css文件才会编译到bundle.js文件），因此需要借助该插件将引入的样式文件copy到dist目录对
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: utils.resolve("../static"), // 从哪个目录copy
+    //       to: "static", // copy到那个目录
+    //     },
+    //   ],
+    // }),
   ],
 
   devServer: {
