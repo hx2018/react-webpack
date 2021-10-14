@@ -1,5 +1,6 @@
 const utils = require("./utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { util } = require("webpack");
 
 module.exports = {
@@ -52,7 +53,7 @@ module.exports = {
     // new CopyWebpackPlugin({
     //   patterns: [
     //     {
-    //       from: utils.resolve("../static"), // 从哪个目录copy
+    //       from: utils.resolve("../src/assets"), // 从哪个目录copy
     //       to: "static", // copy到那个目录
     //     },
     //   ],

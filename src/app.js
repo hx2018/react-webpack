@@ -10,11 +10,16 @@ import Home from "./pages/home";
 import User from "./pages/user";
 import Blog from "./pages/blog";
 import Resume from "./pages/resume";
+import NavigationBar from "@/layout/NavigationBar";
+import SideMenu from "@/layout/SideMenu";
+
 import "./app.less";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <NavigationBar></NavigationBar>
+      <SideMenu />
       <ul>
         <li>
           <Link to="/">Home</Link>
