@@ -1,28 +1,87 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Menu } from "antd";
-// import "antd/dist/antd.css";
 import "./SideMenu.less";
+import { List } from "rc-field-form";
 
 const { Item, SubMenu } = Menu;
 
-export default function SideMenu() {
+// export default class SideMenu extends React.Component {
+//   render() {
+//     console.log("----1", this.props.location);
+
+//     return (
+//       <Menu
+//         className="SideMenu"
+//         defaultSelectedKeys={["resume"]}
+//         mode="inline"
+//         theme="dark"
+//         onSelect={() => {
+//           console.log("+++");
+//         }}
+//       >
+//         <Item key="resume">
+//           <Link to="/resume">简历管理</Link>
+//         </Item>
+//         <SubMenu key="user" title="用户管理">
+//           <Item key="userList">
+//             <Link to="/user/list">用户列表</Link>
+//           </Item>
+//           <Item key="userAdd">
+//             <Link to="/user/add">添加用户</Link>
+//           </Item>
+//         </SubMenu>
+
+//         <SubMenu key="blog" title="博客管理">
+//           <Item key="blogList">
+//             <Link to="/blog/list">博客列表</Link>
+//           </Item>
+//           <Item key="blogAdd">
+//             <Link to="/blog/add">添加博客</Link>
+//           </Item>
+//         </SubMenu>
+//       </Menu>
+//     );
+//   }
+// }
+
+function SideMenu(props) {
+  const {
+    location: { pathname },
+  } = props;
+  console.log("----1", props, pathname);
   return (
     <Menu
       className="SideMenu"
-      defaultSelectedKeys={["resumeManage"]}
+      defaultSelectedKeys={["resume"]}
       mode="inline"
-      subMenuOpenDelay="3000"
+      theme="dark"
+      onSelect={() => {
+        console.log("+++");
+      }}
     >
-      <Item key="resumeManage">简历管理后台</Item>
-      <SubMenu key="userManage" title="用户管理">
-        <Item key="userList">用户列表</Item>
-        <Item key="userAdd">添加用户</Item>
+      <Item key="resume">
+        <Link to="/resume">简历管理</Link>
+      </Item>
+      <SubMenu key="user" title="用户管理">
+        <Item key="userList">
+          <Link to="/user/list">用户列表</Link>
+        </Item>
+        <Item key="userAdd">
+          <Link to="/user/add">添加用户</Link>
+        </Item>
       </SubMenu>
 
-      <SubMenu key="blogManage" title="博客管理">
-        <Item key="blogList">博客列表</Item>
-        <Item key="blogAdd">添加博客</Item>
+      <SubMenu key="blog" title="博客管理">
+        <Item key="blogList">
+          <Link to="/blog/list">博客列表</Link>
+        </Item>
+        <Item key="blogAdd">
+          <Link to="/blog/add">添加博客</Link>
+        </Item>
       </SubMenu>
     </Menu>
   );
 }
+
+export default withRouter(SideMenu);

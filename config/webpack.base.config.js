@@ -1,7 +1,6 @@
 const utils = require("./utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { util } = require("webpack");
 
 module.exports = {
   mode: "development", // default mode

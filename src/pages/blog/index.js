@@ -4,7 +4,8 @@ import Add from "./views/Add";
 import List from "./views/List";
 import "./index.less";
 
-export default function Blog() {
+export default function Blog(props) {
+  console.log("-----", props);
   return (
     <div>
       <p>Blog-Route</p>
@@ -16,8 +17,6 @@ export default function Blog() {
           <Link to="/blog/list">list</Link>
         </li>
       </ul>
-      <Route path="/blog/add" component={Add} />
-      <Route path="/blog/list" component={List} />
     </div>
   );
 }
