@@ -5,7 +5,6 @@ import List from "./views/List";
 import "./index.less";
 
 export default function Blog(props) {
-  console.log("-----", props);
   return (
     <div>
       <p>Blog-Route</p>
