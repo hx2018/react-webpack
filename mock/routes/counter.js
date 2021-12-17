@@ -1,15 +1,24 @@
 var express = require("express");
 const { apply } = require("file-loader");
+var Mock = require("mockjs");
 
 var router = express.Router();
 
 router.get("/counter", function (req, res) {
-  console.log("---get-counter:");
-  res.sendJson("get counter,heihei", 200);
+  var data = Mock.mock({
+    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+    "list|1-10": [
+      {
+        // 属性 id 是一个自增数，起始值为 1，每次增 1
+        "id|+1": 1,
+      },
+    ],
+  });
+  res.sendJson(data, 200);
 });
 
 router.post("/save", function (req, res) {
-  console.log("---post-counter:", req.body);
+  console.log("---post-counter:", req);
   res.sendJson(req.body, 201);
 });
 

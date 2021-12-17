@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { increment } from "../../../../src/redux/action";
+import { getCounterValue, setCounterValue } from "../../../../src/api/counter";
 
 function Counter(props) {
   const { count, add, caption } = props;
+
+  useEffect(() => {
+    // const res = getCounterValue("http://localhost:3001/api/counter");
+    getCounterValue("http://localhost:3001/api/counter").then(
+      (res) => console.log("=====", res),
+      (res) => console.log("=====", res)
+    );
+    setCounterValue("http://localhost:3001/api/save", { name: "hah" }).then(
+      (res) => console.log("-----res", res)
+    );
+  }, []);
 
   return (
     <div>
@@ -15,7 +27,7 @@ function Counter(props) {
         }}
         // value="+"
       />
-      <p>Counter: {count}</p>
+      <p>Counter222: {count}</p>
     </div>
   );
 }
