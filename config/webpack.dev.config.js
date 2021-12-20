@@ -5,12 +5,12 @@ module.exports = Object.assign({}, baseConfig, {
 
   devServer: {
     port: 9000,
-
-    // proxy: {
-    //   "/api": {
-    //     target: "http://localhost:3001",
-    //     secure: false,
-    //   },
-    // },
+    // 处理mock跨域问题，访问mock接口方式改为：http://localhost:9000/api/..
+    proxy: {
+      "/api": {
+        target: "http://localhost:3001",
+        secure: false,
+      },
+    },
   },
 });
