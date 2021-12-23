@@ -1,6 +1,8 @@
 const utils = require("./utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "development", // default mode
@@ -48,6 +50,7 @@ module.exports = {
       filename: utils.resolve("../dist/index.html"), // html模板的生成路径
       //hash: true, // 在打包的资源插入html会加上hash
     }),
+    new BundleAnalyzerPlugin(),
     // *********** HtmlWebpackPlugin指定模版html文件"<link href="引入的样式css文件不会打包到dist目录（只有js文件import的css文件才会编译到bundle.js文件），因此需要借助该插件将引入的样式文件copy到dist目录对
     // new CopyWebpackPlugin({
     //   patterns: [
