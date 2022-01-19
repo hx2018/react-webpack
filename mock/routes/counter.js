@@ -1,10 +1,8 @@
 var express = require("express");
-const { apply } = require("file-loader");
+var router = express.Router();
 var Mock = require("mockjs");
 
-var router = express.Router();
-
-router.get("/counter", function (req, res) {
+router.get("/", function (req, res) {
   var data = Mock.mock({
     // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
     "list|1-10": [

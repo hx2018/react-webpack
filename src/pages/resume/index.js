@@ -1,9 +1,141 @@
-import React from "react";
+// export default function Resume() {
+//   return (
+//     <div>
+//       <p>ResumePage</p>
+//     </div>
+//   );
+// }
 
-export default function Resume() {
-  return (
-    <div>
-      <p>ResumePage</p>
-    </div>
-  );
+import React from "react";
+import { connect } from "react-redux";
+import { Button, Table, Switch } from "antd";
+import { getResumeList, deleteResume, updateStatus } from "../../api/resume";
+
+import "./index.less";
+
+const COLUMNS = [
+  {
+    title: "序号",
+    dataIndex: "index",
+    key: "index",
+  },
+  {
+    title: "头像",
+    dataIndex: "avatar",
+    key: "avatar",
+  },
+  {
+    title: "用户名",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "简历名称",
+    dataIndex: "title",
+    key: "title",
+  },
+  {
+    title: "简历是否公开",
+    dataIndex: "status",
+    key: "status",
+    width: "6%",
+  },
+  {
+    title: "手机号",
+    dataIndex: "mobile",
+    key: "mobile",
+  },
+  {
+    title: "邮箱",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
+    title: "地址",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "创建时间",
+    dataIndex: "create_time",
+    key: "create_time",
+  },
+  {
+    title: "操作",
+    dataIndex: "actions",
+    key: "actions",
+  },
+];
+
+class ResumeIndex extends React.Component {
+  componentDidMount() {
+    const { setList } = this.props;
+    getResumeList().then((res) => {
+      console.log("=====", res);
+      setList(res.data);
+    });
+  }
+
+  columns = (columns) => {
+    return columns.map((item) => {
+      item.align = "center";
+      if (item.key == "index") {
+        item.render = (row, data, index) => {
+          return <p>{index + 1}</p>;
+        };
+      } else if (item.key == "status") {
+        item.render = (row, data) => {
+          return (
+            <Switch checked={row} onChange={() => this.onSwitchChange(data)} />
+          );
+        };
+      } else if (item.key == "avatar") {
+        item.render = (row) => {
+          return <img src={row} alt="" class="avatar" />;
+        };
+      } else if (item.key == "actions") {
+        item.render = (row, data) => (
+          <div>
+            <Button type="danger" onClick={() => this.deleteResume(data)}>
+              删除
+            </Button>
+          </div>
+        );
+      }
+      return item;
+    });
+  };
+
+  onSwitchChange = (item) => {
+    updateStatus({ id: item.id, status: !item.status }).then((res) =>
+      console.log("----update", res)
+    );
+  };
+
+  deleteResume = (item) => {
+    deleteResume(item.id).then((res) => console.log("----delete", res));
+  };
+
+  render() {
+    const { list } = this.props;
+    return (
+      <div class="ResumeIndex">
+        <Table
+          bordered
+          columns={this.columns(COLUMNS)}
+          dataSource={list}
+          rowKey={(record) => record.id}
+        />
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = (state) => ({
+  list: state.resumeList,
+});
+const mapActionToProps = (dispatch) => ({
+  setList: (payload) => dispatch({ type: "SET_RESUME_LIST", payload }),
+});
+
+export default connect(mapStateToProps, mapActionToProps)(ResumeIndex);

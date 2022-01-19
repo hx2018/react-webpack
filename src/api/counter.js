@@ -1,11 +1,11 @@
-import { get, post } from "../../src/helpers/fetch";
+import { fetch } from "../../src/helpers/fetch";
 
 export function getCounterValue(url) {
-  return get(url).then((res) => res);
+  return fetch(url).then((res) => res);
 }
 
-export function setCounterValue(url, body) {
-  return post(url, { body }).then((res) => res);
+export function setCounterValue(url, data) {
+  return fetch(url, "POST", data).then((res) => res);
 }
 // import $ from "jquery";
 // export function getCounterValue(url) {

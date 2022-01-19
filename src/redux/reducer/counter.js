@@ -1,4 +1,4 @@
-import { counter } from "./action-type";
+import { counter } from "../action-type";
 
 // export default function reducer(state, action) {
 //   switch (action.type) {
@@ -10,6 +10,8 @@ import { counter } from "./action-type";
 //       return state;
 //   }
 // }
+
+const initialState = { test2: "reducer111" };
 
 // reducer配置
 const handers = {
@@ -25,7 +27,7 @@ const handers = {
 };
 
 // reducer
-export default function (state, action) {
+export default function (state = initialState, action) {
   const hander = handers[action.type];
   if (!hander) {
     return state;
