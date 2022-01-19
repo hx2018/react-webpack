@@ -25,12 +25,13 @@ function handleResponse(url, options) {
   return fetch(url, options).then((res) => res.json());
 }
 
-export function fetch(url, method = "GET", data = {}, options = {}) {
-  if (method === "GET") {
-    options = { ...options, method: "GET" };
-  } else {
-    const body = JSON.stringify(data);
-    options = { ...options, method, body };
-  }
+export function get(url, data = {}, options = {}) {
+  options = { ...options, method: "GET" };
+  return handleResponse(url, options);
+}
+
+export function post(url, method = "POST", data = {}, options = {}) {
+  const body = JSON.stringify(data);
+  options = { ...options, method, body };
   return handleResponse(url, options);
 }

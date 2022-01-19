@@ -12,9 +12,10 @@ function Counter(props) {
       (res) => console.log("=====", res),
       (res) => console.log("=====", res)
     );
-    setCounterValue("http://localhost:9000/api/save", { name: "hah" }).then(
-      (res) => console.log("-----res", res)
-    );
+    console.log("^^^^^");
+    setCounterValue("http://localhost:9000/api/counter/save", {
+      name: "hah",
+    }).then((res) => console.log("-----res", res));
   }, []);
 
   return (
