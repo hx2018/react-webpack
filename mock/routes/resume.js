@@ -40,7 +40,7 @@ router.get("/list", function (req, res) {
 });
 
 router.delete("/list/:id", function (req, res) {
-  console.log("======mock", req.params);
+  console.log("======mock-delete", req.params);
 
   // const id = req.params.id;
   // const idx = DATA.list.findIndex((item) => item.id === id);
@@ -49,7 +49,7 @@ router.delete("/list/:id", function (req, res) {
 });
 
 router.post("/update", function (req, res) {
-  console.log("======mock", req.body);
+  console.log("======mock-update", req.body);
   // const { id, status } = req.body;
   // const item = DATA.list.find((item) => item.id === id);
   // item.status = status;

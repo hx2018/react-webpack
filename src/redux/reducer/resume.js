@@ -15,5 +15,5 @@ export default function (state = initialState, action) {
   if (!handers[action.type]) {
     return state;
   }
-  return handers(action.type)(state, action);
+  return handers[action.type](state, action);
 }

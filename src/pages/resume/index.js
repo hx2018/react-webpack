@@ -132,7 +132,7 @@ class ResumeIndex extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  list: state.resumeList,
+  list: state.resume.resumeList,
 });
 const mapActionToProps = (dispatch) => ({
   setList: (payload) => dispatch({ type: "SET_RESUME_LIST", payload }),
