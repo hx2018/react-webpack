@@ -16,10 +16,7 @@ router.get("/", function (req, res) {
 });
 
 router.post("/save", function (req, res) {
-  console.log("---post-counter:", req);
   res.sendJson(req.body, 201);
 });
-
-// router.use("/count", router);
 
 module.exports = router;
