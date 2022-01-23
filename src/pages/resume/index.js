@@ -91,7 +91,7 @@ class ResumeIndex extends React.Component {
         };
       } else if (item.key == "avatar") {
         item.render = (row) => {
-          return <img src={row} alt="" class="avatar" />;
+          return <img src={row} alt="" className="avatar" />;
         };
       } else if (item.key == "actions") {
         item.render = (row, data) => (
@@ -119,7 +119,7 @@ class ResumeIndex extends React.Component {
   render() {
     const { list } = this.props;
     return (
-      <div class="ResumeIndex">
+      <div className="ResumeIndex">
         <Table
           bordered
           columns={this.columns(COLUMNS)}

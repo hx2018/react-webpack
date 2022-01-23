@@ -38,12 +38,14 @@ export default function App() {
           <Route path="/blog/add" component={blogAdd} />
           <Route path="/blog/list" component={blogList} />
 
+          <Route exact path="/resume" component={Resume} />
+
           <Route
             exact
-            path="/resume"
+            path="/other"
             render={() => (
               <div>
-                <p>RESUMEPAGE</p>
+                <p>OTHERPAGE</p>
               </div>
             )}
           />

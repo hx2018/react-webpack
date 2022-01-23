@@ -1,7 +1,6 @@
 import { get, post } from "../../src/helpers/fetch";
 
 export function getCounterValue(url) {
-  console.log("zzzzzzz", url);
   return get(url).then((res) => res);
 }
 

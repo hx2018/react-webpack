@@ -25,7 +25,7 @@ function handleResponse(url, options) {
   return fetch(url, options).then((res) => res.json());
 }
 
-export function get(url, data = {}, options = {}) {
+export function get(url, options = {}) {
   options = { ...options, method: "GET" };
   return handleResponse(url, options);
 }

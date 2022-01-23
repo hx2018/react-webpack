@@ -11,7 +11,7 @@ import { counter } from "../action-type";
 //   }
 // }
 
-const initialState = { test2: "reducer111" };
+const initialState = { firstCounter: 1, secondCounter: 2, thirdCounter: 3 };
 
 // reducer配置
 const handers = {

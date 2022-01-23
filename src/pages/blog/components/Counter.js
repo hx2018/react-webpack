@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { increment } from "../../../../src/redux/action";
-import { getCounterValue, setCounterValue } from "../../../../src/api/counter";
+import { getCounterValue, setCounterValue } from "../../../api/counter";
+import { getResumeList, deleteResume, updateStatus } from "../../../api/resume";
 
 function Counter(props) {
   const { count, add, caption } = props;
@@ -12,7 +13,10 @@ function Counter(props) {
       (res) => console.log("=====", res),
       (res) => console.log("=====", res)
     );
-    console.log("^^^^^");
+    getResumeList().then((res) => {
+      console.log("=====", res);
+    });
+
     setCounterValue("http://localhost:9000/api/counter/save", {
       name: "hah",
     }).then((res) => console.log("-----res", res));
@@ -34,8 +38,9 @@ function Counter(props) {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const { counter } = state;
   // ownProps就是除state以外获取的props，这里是caption
-  return { count: state[ownProps.caption] };
+  return { count: counter[ownProps.caption] };
 };
 
 const mapActionToProps = (dispatch) => ({
