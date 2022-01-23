@@ -1,11 +1,3 @@
-// export default function Resume() {
-//   return (
-//     <div>
-//       <p>ResumePage</p>
-//     </div>
-//   );
-// }
-
 import React from "react";
 import { connect } from "react-redux";
 import { Button, Table, Switch } from "antd";
@@ -75,7 +67,6 @@ class ResumeIndex extends React.Component {
   getList = () => {
     const { setList } = this.props;
     getResumeList().then((res) => {
-      console.log("-----getList----", res.data);
       if (res.status === 200) {
         setList(res.data);
       }
@@ -114,7 +105,6 @@ class ResumeIndex extends React.Component {
 
   onSwitchChange = (item) => {
     updateStatus({ id: item.id, status: !item.status }).then((res) => {
-      console.log("----update", res);
       if (res.status === 200) {
         this.getList();
       }
@@ -123,7 +113,6 @@ class ResumeIndex extends React.Component {
 
   deleteResume = (item) => {
     deleteResume(item.id).then((res) => {
-      console.log("----delete", res);
       if (res.status === 200) {
         this.getList();
       }
