@@ -69,12 +69,18 @@ const COLUMNS = [
 
 class ResumeIndex extends React.Component {
   componentDidMount() {
+    this.getList();
+  }
+
+  getList = () => {
     const { setList } = this.props;
     getResumeList().then((res) => {
-      console.log("=====", res);
-      setList(res.data);
+      console.log("-----getList----", res.data);
+      if (res.status === 200) {
+        setList(res.data);
+      }
     });
-  }
+  };
 
   columns = (columns) => {
     return columns.map((item) => {
@@ -107,13 +113,21 @@ class ResumeIndex extends React.Component {
   };
 
   onSwitchChange = (item) => {
-    updateStatus({ id: item.id, status: !item.status }).then((res) =>
-      console.log("----update", res)
-    );
+    updateStatus({ id: item.id, status: !item.status }).then((res) => {
+      console.log("----update", res);
+      if (res.status === 200) {
+        this.getList();
+      }
+    });
   };
 
   deleteResume = (item) => {
-    deleteResume(item.id).then((res) => console.log("----delete", res));
+    deleteResume(item.id).then((res) => {
+      console.log("----delete", res);
+      if (res.status === 200) {
+        this.getList();
+      }
+    });
   };
 
   render() {

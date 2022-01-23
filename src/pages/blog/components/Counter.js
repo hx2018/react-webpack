@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { increment } from "../../../../src/redux/action";
 import { getCounterValue, setCounterValue } from "../../../api/counter";
-import { getResumeList, deleteResume, updateStatus } from "../../../api/resume";
 
 function Counter(props) {
   const { count, add, caption } = props;
@@ -13,9 +12,6 @@ function Counter(props) {
       (res) => console.log("=====", res),
       (res) => console.log("=====", res)
     );
-    getResumeList().then((res) => {
-      console.log("=====", res);
-    });
 
     setCounterValue("http://localhost:9000/api/counter/save", {
       name: "hah",
