@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Route,
   BrowserRouter,
   Link,
   Switch,
+  Redirect,
   HashRouter,
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
-import Home from "./pages/home";
+// import Home from "./pages/home";
 import User from "./pages/user";
 import Blog from "./pages/blog";
 // import Resume from "./pages/resume";
@@ -21,17 +22,22 @@ import userList from "./pages/user/views/List";
 import AsyncRouter, { RouterHooks } from "./components/AsyncRouter";
 
 import "./app.less";
+console.log("-----app-import");
 
+const Home = AsyncRouter(() => import("./pages/Home"));
 const Resume = AsyncRouter(() => import("./pages/resume"));
+console.log("-----app-ayncimport");
 
 export default function App() {
   useEffect(() => {
     /* 增加监听函数 */
+    console.log("-----app-useeffect");
     RouterHooks.beforeRouterComponentLoad((history) => {
       console.log("当前激活的路由是", history.location.pathname);
     });
   }, []);
 
+  console.log("-----app---");
   return (
     <Provider store={store}>
       <HashRouter className="App">
@@ -59,7 +65,7 @@ export default function App() {
               </div>
             )}
           />
-          <Redirect from="/*" to="/index" />
+          {/* <Redirect from="/*" to="/index" /> */}
         </div>
       </HashRouter>
     </Provider>

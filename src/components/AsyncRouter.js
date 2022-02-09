@@ -37,6 +37,7 @@ export default function AsyncRouter(loadRouter) {
       });
     }
     componentDidMount() {
+      console.log("-----componetdidmount", this.state.Component);
       if (this.state.Component) return;
       loadRouter()
         .then((module) => module.default)
@@ -49,6 +50,7 @@ export default function AsyncRouter(loadRouter) {
     }
     render() {
       const { Component } = this.state;
+      console.log("-----render-", Component);
       return Component ? <Component {...this.props} /> : null;
     }
   };
