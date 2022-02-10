@@ -16,28 +16,25 @@ import Blog from "./pages/blog";
 import NavigationBar from "@/layout/NavigationBar";
 import SideMenu from "@/layout/SideMenu";
 import blogAdd from "./pages/blog/views/Add";
-import blogList from "./pages/blog/views/List";
+// import blogList from "./pages/blog/views/List";
 import userAdd from "./pages/user/views/Add";
 import userList from "./pages/user/views/List";
 import AsyncRouter, { RouterHooks } from "./components/AsyncRouter";
 
 import "./app.less";
-console.log("-----app-import");
 
 const Home = AsyncRouter(() => import("./pages/Home"));
 const Resume = AsyncRouter(() => import("./pages/resume"));
-console.log("-----app-ayncimport");
+const blogList = AsyncRouter(() => import("./pages/blog/views/List"));
 
 export default function App() {
   useEffect(() => {
     /* 增加监听函数 */
-    console.log("-----app-useeffect");
     RouterHooks.beforeRouterComponentLoad((history) => {
-      console.log("当前激活的路由是", history.location.pathname);
+      console.log("当前激活的路由是-", history.location.pathname);
     });
   }, []);
 
-  console.log("-----app---");
   return (
     <Provider store={store}>
       <HashRouter className="App">

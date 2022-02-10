@@ -37,10 +37,17 @@ export default function AsyncRouter(loadRouter) {
       });
     }
     componentDidMount() {
-      console.log("-----componetdidmount", this.state.Component);
       if (this.state.Component) return;
       loadRouter()
-        .then((module) => module.default)
+        .then(
+          (module) => {
+            console.log("-----componetdidmount", module);
+            return module.default;
+          },
+          (err) => {
+            console.log("----componentdidmount-err", err);
+          }
+        )
         .then((Component) =>
           this.setState({ Component }, () => {
             /* 触发每个路由加载之后钩子函数 */
@@ -50,7 +57,11 @@ export default function AsyncRouter(loadRouter) {
     }
     render() {
       const { Component } = this.state;
-      console.log("-----render-", Component);
+      console.log(
+        "-----render-",
+        typeof Component,
+        Object.prototype.toString.call(Component)
+      );
       return Component ? <Component {...this.props} /> : null;
     }
   };
