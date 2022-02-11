@@ -22,6 +22,8 @@ export const RouterHooks = {
 };
 
 /* 路由懒加载HOC */
+// asyncRouter实际就是一个高级组件,将()=>import()作为加载函数传进来，然后当外部Route加载当前组件的时候，在componentDidMount生命周期函数，加载真实的组件，并渲染组件，我们还可以写针对路由懒加载状态定制属于自己的路由监听器beforeRouterComponentLoad和afterRouterComponentDidLoaded，类似vue中 watch $route 功能。接下来我们看看如何使用。
+// 这样一来，我们既做到了路由的懒加载，又弥补了react-router没有监听当前路由变化的监听函数的缺陷。
 export default function AsyncRouter(loadRouter) {
   return class Content extends React.Component {
     constructor(props) {
