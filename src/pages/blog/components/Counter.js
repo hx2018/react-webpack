@@ -8,12 +8,12 @@ function Counter(props) {
 
   useEffect(() => {
     // const res = getCounterValue("http://localhost:3001/api/counter");
-    getCounterValue("http://localhost:9000/api/counter").then(
+    getCounterValue("http://localhost:3000/api/counter").then(
       (res) => console.log("=====", res),
       (res) => console.log("=====", res)
     );
 
-    setCounterValue("http://localhost:9000/api/counter/save", {
+    setCounterValue("http://localhost:3000/api/counter/save", {
       name: "hah",
     }).then((res) => console.log("-----res", res));
   }, []);
